@@ -1,0 +1,41 @@
+name: CI
+
+# Controls when the action will run.
+# Since all changes should go through pull request, workflow will always run
+# for PRs.
+# Once we merge a PR, we want to run this workflow one final time on the master
+# branch for verification and so the push event is only triggered for that
+# branch.
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.16
+
+    - name: Check editorconfig formatting
+      uses: editorconfig-checker/action-editorconfig-checker@main
+
+    - name: Install Dependencies
+      run: GO111MODULE=off go get golang.org/x/tools/cmd/goimports
+
+    - name: Build
+      run: make build
+
+    - name: Lint
+      run: make lint
+
+    - name: Test
+      run: make check
+
