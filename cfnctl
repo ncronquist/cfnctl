@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Helper script for running the CLI code while developing
+
+go run main.go $@

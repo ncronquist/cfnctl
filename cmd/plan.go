@@ -24,13 +24,9 @@ import (
 // planCmd represents the plan command
 var planCmd = &cobra.Command{
 	Use:   "plan",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Show the planned changes for a Cloudformation run.",
+	Long: `Creates a change set, prints the planned changes, and then
+deletes the change set.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("plan called")
 	},
@@ -48,4 +44,7 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// planCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+
+	planCmd.Flags().StringP("workspace", "w", "", "Workspace name defined in configuration file.")
+
 }
