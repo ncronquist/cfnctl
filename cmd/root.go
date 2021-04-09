@@ -36,16 +36,10 @@ var cfgFile string
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "cfnctl",
-	Short: "A brief description of your application",
-	Long: `A longer description that spans multiple lines and likely contains
-examples and usage of using your application. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
-	// Uncomment the following line if your bare application
-	// has an action associated with it:
-	// Run: func(cmd *cobra.Command, args []string) { },
+	Short: "cfnctl is a tool for managing cloudformation",
+	Long: `cfnctl is a CLI tool meant to replicate some of of the usage
+of Terraform, but also to build in support for configuration around
+cloudformation environments and parameter usage.`,
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
